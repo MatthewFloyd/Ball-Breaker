@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 210560978}
   - component: {fileID: 210560981}
   - component: {fileID: 210560980}
+  - component: {fileID: 210560982}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -195,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 210560977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.32, y: 6, z: 0}
+  m_LocalPosition: {x: 2, y: 0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -238,6 +239,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &210560982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210560977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e1dc5e578f977428ed916ab2aab10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paddle1: {fileID: 1197572708}
+  paddleToBallVector: {x: 0, y: 0}
+  LaunchVector: {x: 2, y: 15}
 --- !u!1 &225388144
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +822,7 @@ GameObject:
   - component: {fileID: 1197572706}
   - component: {fileID: 1197572705}
   - component: {fileID: 1197572707}
+  - component: {fileID: 1197572708}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -869,7 +886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197572704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.5, z: 0}
+  m_LocalPosition: {x: 2, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -892,7 +909,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 0.64}
+    oldSize: {x: 2, y: 0.5}
     newSize: {x: 2.56, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -908,6 +925,21 @@ PolygonCollider2D:
       - {x: 1.28, y: -0.32}
       - {x: 1.2837775, y: 0.056002527}
       - {x: 1.0360024, y: 0.15733507}
+--- !u!114 &1197572708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197572704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe0c4d07ea09f943a9f9a6d979a7061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenWidthUnits: 16
+  paddleMinUnits: 1
+  paddleMaxUnits: 15
 --- !u!1 &1510208887
 GameObject:
   m_ObjectHideFlags: 0
