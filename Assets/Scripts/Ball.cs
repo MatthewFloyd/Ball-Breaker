@@ -5,12 +5,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] Paddle paddle1;
-
-    [SerializeField] Vector2 paddleToBallVector;
+    [SerializeField] AudioClip[] ballSounds;
     [SerializeField] Vector2 LaunchVector;
     //[SerializeField] float offsetX = 0f;
     //[SerializeField] float offsetY = 0.46f;
 
+    Vector2 paddleToBallVector;
+    AudioSource myAudioSource;
 
     private const string FireAxis = "Fire1";
     private bool _locked = true;
@@ -19,6 +20,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         paddleToBallVector = transform.position - paddle1.transform.position;
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,5 +45,11 @@ public class Ball : MonoBehaviour
     private void LaunchBall()
     {
         GetComponent<Rigidbody2D>().velocity = LaunchVector;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(_locked) { return;  }
+        myAudioSource.PlayOneShot(ballSounds[UnityEngine.Random.Range(0, ballSounds.Length-1)]);
     }
 }
