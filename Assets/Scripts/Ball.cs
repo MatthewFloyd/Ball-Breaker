@@ -5,6 +5,7 @@ public class Ball : MonoBehaviour
     [SerializeField] Paddle paddle1;
     [SerializeField] AudioClip[] ballSounds;
     [SerializeField] Vector2 LaunchVector;
+    [SerializeField] float Speed = 12f;
     [SerializeField] float RandomFactor = 0.2f;
 
     Vector2 paddleToBallVector;
@@ -28,7 +29,7 @@ public class Ball : MonoBehaviour
         if (_locked)
         {
             LockBallToPaddle();
-            if(Input.GetAxisRaw(FireAxis) != 0)
+            if (Input.GetAxisRaw(FireAxis) != 0)
             {
                 LaunchBall();
                 _locked = false;
@@ -43,7 +44,7 @@ public class Ball : MonoBehaviour
 
     private void LaunchBall()
     {
-        myRigidBody2D.velocity = LaunchVector;
+        myRigidBody2D.velocity = ConstSpeed(LaunchVector);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,8 +52,17 @@ public class Ball : MonoBehaviour
         Vector2 velocityRand = new Vector2(Random.Range(0f, RandomFactor), // (Random.Range(0, 2) * 2 - 1) sets positive or negative randomly
                                             Random.Range(0f, RandomFactor)); // preventing ball sticks on only x or only y axis
 
-        if(_locked) { return;  }
+        if(_locked) { return; }
         myAudioSource.PlayOneShot(ballSounds[UnityEngine.Random.Range(0, ballSounds.Length-1)]);
         myRigidBody2D.velocity += velocityRand;
+        myRigidBody2D.velocity = ConstSpeed(myRigidBody2D.velocity);
+    }
+
+    private Vector2 ConstSpeed(Vector2 original)
+    {
+        Vector2 v = original;
+        v = v.normalized;
+        v *= Speed;
+        return v;
     }
 }

@@ -60,6 +60,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -139,6 +140,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5f14f49421813394d93a57ed37e7b55f, type: 3}
   - {fileID: 8300000, guid: ea72fcf1c3a197c4e9687d6a472fa5ce, type: 3}
   LaunchVector: {x: 2, y: 12}
+  Speed: 13
   RandomFactor: 1
 --- !u!82 &444513199
 AudioSource:
